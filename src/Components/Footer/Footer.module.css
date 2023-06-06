@@ -1,0 +1,31 @@
+.footer {
+  margin-top: 50px;
+  height: 300px;
+  background-color: #1976d2;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  padding-block: 30px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100%;
+}
+
+.footer_link {
+  color: white;
+  text-decoration: none;
+  margin-block: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer_link:hover {
+  color: #ccc;
+}

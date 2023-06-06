@@ -1,0 +1,20 @@
+.breadcrumb_container {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.active {
+  color: #1976d2;
+}
+
+.disabled {
+  color: #eee;
+  cursor: default;
+}
+
+.non_active {
+  color: #ccc;
+}
+.non_active:hover {
+  color: #1976d2;
+}

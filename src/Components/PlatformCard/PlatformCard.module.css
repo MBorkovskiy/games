@@ -1,0 +1,36 @@
+.platform_card {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.platform_card_image {
+  width: 365px;
+  height: 400px;
+  transition: all 0.3s ease-in-out;
+}
+
+.platform_card_box {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.438);
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.platform_card:hover .platform_card_box {
+  opacity: 1;
+}
+
+.platform_card:hover .platform_card_image {
+  transform: scale(1.1);
+}
+
+.platform_card_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

@@ -1,0 +1,35 @@
+.main {
+  width: 267px;
+  cursor: pointer;
+  height: 340px;
+}
+
+.main_image {
+  height: 140px;
+}
+
+.main_info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+}
+
+.main_description {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card_icon {
+  width: 24px;
+  height: 24px;
+  opacity: 50%;
+}
+
+.main_foot {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}

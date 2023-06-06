@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App {
+  width: 1440px;
+  margin: auto;
+  flex-grow: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+.slick-dots button:before {
+  color: #1976d2 !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #1976d2 !important;
+}
+
+.slick-list {
+  margin: 0 -14px !important;
+}
+
+.slick-slide > div {
+  padding: 0 14px !important;
+}
+
+.slick-next {
+  top: -35px !important;
+  right: 0px !important;
+}
+
+.slick-prev {
+  top: -35px !important;
+  left: 1100px !important;
+}

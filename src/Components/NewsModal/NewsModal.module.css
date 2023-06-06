@@ -1,0 +1,16 @@
+.modal_box {
+  width: 500px;
+  margin-inline: auto;
+  margin-top: 150px;
+  outline: none;
+}
+
+.modal_card {
+  height: max-content;
+}
+
+.modal_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
