@@ -3,7 +3,7 @@ import { FC } from "react";
 
 interface FeaturesProps {
   title: string;
-  obj: any;
+  obj: React.ReactNode;
 }
 
 export const Features: FC<FeaturesProps> = ({ title, obj }) => {

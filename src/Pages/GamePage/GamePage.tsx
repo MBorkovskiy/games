@@ -5,7 +5,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { getGame } from "../../store/gameSlice";
 import { Link, useParams } from "react-router-dom";
 import { Box, Button, Typography } from "@mui/material";
@@ -14,13 +13,14 @@ import { DividerInfo } from "../../Components/DividerInfo/DividerInfo";
 import { Features } from "../../Components/Features/Features";
 import { changeStore } from "../../store/gamesListSlice";
 import { Loader } from "../../Components/Loader/Loader";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { IdProps } from "../../types/types";
 
 export const GamePage = () => {
-  const dispatch = useDispatch();
-  const params = useParams();
-  const game = useSelector((state) => state.game.game);
-  const isLoading = useSelector((state) => state.game.isLoading);
-  const gamesList = useSelector((state) => state.gamesList.gamesList);
+  const dispatch = useAppDispatch();
+  const params = useParams<keyof IdProps>() as IdProps;
+  const { game, isLoading } = useAppSelector((state) => state.game);
+  const gamesList = useAppSelector((state) => state.gamesList.gamesList);
   const [description, setDescription] = useState(false);
   const settings = {
     dots: true,
@@ -67,7 +67,7 @@ export const GamePage = () => {
   };
 
   useEffect(() => {
-    dispatch(getGame(params.id));
+    dispatch(getGame({ id: params.id }));
   }, []);
 
   return (
@@ -87,15 +87,18 @@ export const GamePage = () => {
             <Box className={styles.short_description}>
               {game.short_description}
             </Box>
-            <Link to={game.game_url} target="blank">
-              <Button
-                fullWidth
-                variant="contained"
-                sx={{ marginBlock: "15px" }}
-              >
-                Play Now
-              </Button>
-            </Link>
+            {game?.game_url && (
+              <Link to={game.game_url} target="blank">
+                <Button
+                  fullWidth
+                  variant="contained"
+                  sx={{ marginBlock: "15px" }}
+                >
+                  Play Now
+                </Button>
+              </Link>
+            )}
+
             {gamesList.find(
               (el) => el.id === game.id && el.favorite === true
             ) ? (

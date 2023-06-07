@@ -1,8 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_HOST, API_KEY, BASE_URL } from "../constants/api/api";
+import { GameProps } from "../types/types";
 
-export const getPlatform = createAsyncThunk(
+interface ParamsProps {
+  platform: string;
+  category: string;
+  sort: string;
+}
+
+interface InitialStateProps {
+  platform: GameProps[];
+  isLoading: boolean;
+}
+
+export const getPlatform = createAsyncThunk<GameProps[], ParamsProps>(
   "games/platform",
   async ({ platform, category, sort }) => {
     const responce = await axios.get(`${BASE_URL}/games`, {
@@ -20,7 +32,7 @@ export const getPlatform = createAsyncThunk(
   }
 );
 
-const initialState = {
+const initialState: InitialStateProps = {
   platform: [],
   isLoading: false,
 };
@@ -28,6 +40,7 @@ const initialState = {
 const platformSlice = createSlice({
   name: "platform",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getPlatform.pending, (state, action) => {
       state.isLoading = true;

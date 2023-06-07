@@ -5,7 +5,7 @@ import categorySlice from "./categorySlice";
 import gameSlice from "./gameSlice";
 import newsSlice from "./newsSlice";
 
-export default configureStore({
+const store = configureStore({
   reducer: {
     gamesList: gamesListSlice,
     platform: platformSlice,
@@ -14,3 +14,6 @@ export default configureStore({
     news: newsSlice,
   },
 });
+export default store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

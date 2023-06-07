@@ -1,7 +1,6 @@
 import styles from "./PlatformPage.module.css";
 import { useEffect, useState } from "react";
 import { getPlatform } from "../../store/platformSlice";
-import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Box, Container, List, Pagination } from "@mui/material";
 import { MainCard } from "../../Components/MainCard/MainCard";
@@ -12,12 +11,14 @@ import { HeadText } from "../../Components/HeadText/HeadText";
 import { MyBreadcrumbs } from "../../Components/MyBreadcrumbs/MyBreadcrumbs";
 import { SortInput } from "../../Components/SortInput/SortInput";
 import { Loader } from "../../Components/Loader/Loader";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { IdProps } from "../../types/types";
 
 export const PlatformPage = () => {
-  const dispatch = useDispatch();
-  const platform = useSelector((state) => state.platform.platform);
-  const isLoading = useSelector((state) => state.platform.isLoading);
-  const params = useParams();
+  const dispatch = useAppDispatch();
+  const { platform, isLoading } = useAppSelector((state) => state.platform);
+
+  const params = useParams<keyof IdProps>() as IdProps;
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ export const PlatformPage = () => {
   const [end, setEnd] = useState(12);
   const [step] = useState(12);
 
-  const handleChange = (event, value) => {
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
     setStart(step * value - 12);
     setEnd(step * value);
@@ -66,19 +67,19 @@ export const PlatformPage = () => {
           title={"Chose Platform"}
           selectValue={platformInput}
           selectFunc={setPlatformInput}
-          data={platformList}
+          platform={platformList}
         />
         <SortInput
           title={"Chose Genre"}
           selectValue={categoryInput}
           selectFunc={setCategoryInput}
-          data={genresList}
+          list={genresList}
         />
         <SortInput
           title={"Sort By"}
           selectValue={sortInput}
           selectFunc={setSortInput}
-          data={sortList}
+          list={sortList}
         />
       </Box>
       {isLoading ? (

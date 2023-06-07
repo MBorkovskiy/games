@@ -7,8 +7,8 @@ import { LocationPathnameProps, ParamsIdProps } from "../../types/types";
 interface MyBreadcrumbsProps {
   title: string;
   location: LocationPathnameProps;
-  params: ParamsIdProps;
-  locParams: string;
+  params?: ParamsIdProps;
+  locParams?: string;
 }
 
 export const MyBreadcrumbs: FC<MyBreadcrumbsProps> = ({
@@ -32,7 +32,7 @@ export const MyBreadcrumbs: FC<MyBreadcrumbsProps> = ({
           </Link>
         ) : (
           <Link className={styles.active} to={`${location.pathname}`}>
-            {params.id.replace(params.id[0], params.id[0].toUpperCase())}
+            {params?.id.replace(params.id[0], params.id[0].toUpperCase())}
           </Link>
         )}
       </Breadcrumbs>

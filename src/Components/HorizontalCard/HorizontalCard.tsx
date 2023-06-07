@@ -4,12 +4,18 @@ import all from "../../assets/all.png";
 import windows from "../../assets/windows.png";
 import browser from "../../assets/browser.png";
 import { Link, useNavigate } from "react-router-dom";
+import { FC } from "react";
+import { GameProps } from "../../types/types";
 
-export const HorizontalCard = ({ el }) => {
+interface HorizontalCardProps {
+  el: GameProps;
+}
+
+export const HorizontalCard: FC<HorizontalCardProps> = ({ el }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/category/${el.genre.toLowerCase()}`);
+    navigate(`/category/${el?.genre?.toLowerCase()}`);
   };
   return (
     <Link to={`/${el.id}`}>
@@ -45,9 +51,11 @@ export const HorizontalCard = ({ el }) => {
                 )}
               </Typography>
               <Button
-                onClick={(e) => {
+                onClick={(
+                  e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+                ) => {
                   e.preventDefault();
-                  handleNavigate(el);
+                  handleNavigate();
                 }}
                 variant="outlined"
                 size="small"

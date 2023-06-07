@@ -7,14 +7,14 @@ import {
   Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSelector } from "react-redux";
 import { useState } from "react";
 import styles from "./SearchPage.module.css";
 import { MainCard } from "../../Components/MainCard/MainCard";
+import { useAppSelector } from "../../hooks/hooks";
 
 export const SearchPage = () => {
   const [inputValue, setInputValue] = useState("");
-  const gamesList = useSelector((state) => state.gamesList.gamesList);
+  const gamesList = useAppSelector((state) => state.gamesList.gamesList);
 
   return (
     <Container>
@@ -38,7 +38,7 @@ export const SearchPage = () => {
         {inputValue &&
           gamesList
             .filter((el) =>
-              el.title.toLowerCase().includes(inputValue.toLowerCase())
+              el?.title?.toLowerCase().includes(inputValue.toLowerCase())
             )
             .map((el) => <MainCard key={el.id} el={el} />)}
       </List>

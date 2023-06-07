@@ -1,20 +1,29 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_HOST, API_KEY, BASE_URL } from "../constants/api/api";
+import { GameProps } from "../types/types";
 
-export const getGamesList = createAsyncThunk("games/list", async () => {
-  const responce = await axios.get(`${BASE_URL}/games`, {
-    headers: {
-      "X-RapidAPI-Key": API_KEY,
-      "X-RapidAPI-Host": API_HOST,
-    },
-  });
-  return responce.data;
-});
+interface InitialStateProps {
+  gamesList: GameProps[];
+  isLoadingGames: boolean;
+}
 
-const initialState = {
+export const getGamesList = createAsyncThunk<GameProps[]>(
+  "games/list",
+  async () => {
+    const responce = await axios.get(`${BASE_URL}/games`, {
+      headers: {
+        "X-RapidAPI-Key": API_KEY,
+        "X-RapidAPI-Host": API_HOST,
+      },
+    });
+    return responce.data;
+  }
+);
+
+const initialState: InitialStateProps = {
   gamesList: [],
-  isLoading: false,
+  isLoadingGames: false,
 };
 
 const gamesListSlice = createSlice({
@@ -22,11 +31,11 @@ const gamesListSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(getGamesList.pending, (state, action) => {
-      state.isLoading = true;
+      state.isLoadingGames = true;
     });
     builder.addCase(getGamesList.fulfilled, (state, action) => {
       state.gamesList = action.payload;
-      state.isLoading = false;
+      state.isLoadingGames = false;
     });
   },
   reducers: {

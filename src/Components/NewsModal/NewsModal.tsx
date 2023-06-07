@@ -10,8 +10,16 @@ import {
 } from "@mui/material";
 import styles from "./NewsModal.module.css";
 import { Link } from "react-router-dom";
+import { FC } from "react";
+import { NewsProps } from "../../types/types";
 
-export const NewsModal = ({ el, handleClose, open }) => {
+interface NewsModalProps {
+  el: NewsProps;
+  handleClose: () => void;
+  open: boolean;
+}
+
+export const NewsModal: FC<NewsModalProps> = ({ el, handleClose, open }) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box className={styles.modal_box}>

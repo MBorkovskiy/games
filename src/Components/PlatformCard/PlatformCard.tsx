@@ -1,8 +1,14 @@
 import { Box, Card, CardMedia, Typography } from "@mui/material";
 import styles from "./PlatformCard.module.css";
 import { Link } from "react-router-dom";
+import { PlatformListProps } from "../../constants/platformList/platformList";
+import { FC } from "react";
 
-export const PlatformCard = ({ el }) => {
+interface PlatformCardProps {
+  el: PlatformListProps;
+}
+
+export const PlatformCard: FC<PlatformCardProps> = ({ el }) => {
   return (
     <Link to={`/platform/${el.name}`}>
       <Card className={styles.platform_card}>

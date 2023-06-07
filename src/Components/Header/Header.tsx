@@ -4,12 +4,12 @@ import logo from "../../assets/logo.png";
 import styles from "./Header.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hooks/hooks";
 
 export const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const gamesList = useSelector((state) => state.gamesList.gamesList);
+  const gamesList = useAppSelector((state) => state.gamesList.gamesList);
   const count = gamesList.filter((el) => el.favorite === true);
 
   const toSearchPage = () => {

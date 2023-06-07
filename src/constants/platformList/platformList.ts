@@ -2,7 +2,7 @@ import pc from "../../assets/pc.jpg";
 import browser from "../../assets/browser.jpg";
 import all from "../../assets/all.jpg";
 
-interface PlatformListProps {
+export interface PlatformListProps {
   name: string;
   image: string;
 }
