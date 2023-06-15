@@ -45,8 +45,6 @@ export const MainCard: FC<MainCardProps> = ({ el }) => {
               )}
             </Typography>
             <Button
-              //перепроверить
-              // React.ReactEventHandler
               onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                 e.preventDefault();
                 handleNavigate();

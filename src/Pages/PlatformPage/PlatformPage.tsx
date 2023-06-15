@@ -13,6 +13,7 @@ import { SortInput } from "../../Components/SortInput/SortInput";
 import { Loader } from "../../Components/Loader/Loader";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { IdProps } from "../../types/types";
+import { scrollToTop } from "../../constants/scrollToTop/scrollToTop";
 
 export const PlatformPage = () => {
   const dispatch = useAppDispatch();
@@ -54,6 +55,10 @@ export const PlatformPage = () => {
       })
     );
   }, [platformInput, categoryInput, sortInput]);
+
+  useEffect(() => {
+    scrollToTop();
+  }, [page]);
 
   return (
     <Container>

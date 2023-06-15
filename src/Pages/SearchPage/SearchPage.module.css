@@ -2,10 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 28px;
-  margin-top: 15px;
 }
 
 .search_box {
-  margin-top: 15px;
+  margin-block: 15px;
   width: 100%;
 }
