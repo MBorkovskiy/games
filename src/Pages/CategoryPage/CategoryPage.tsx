@@ -9,6 +9,7 @@ import { MyBreadcrumbs } from "../../Components/MyBreadcrumbs/MyBreadcrumbs";
 import { Loader } from "../../Components/Loader/Loader";
 import { IdProps } from "../../types/types";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { scrollToTop } from "../../constants/scrollToTop/scrollToTop";
 
 export const CategoryPage = () => {
   const dispatch = useAppDispatch();
@@ -30,6 +31,10 @@ export const CategoryPage = () => {
   useEffect(() => {
     dispatch(getCategory({ params: params.id }));
   }, [location]);
+
+  useEffect(() => {
+    scrollToTop();
+  }, [page]);
 
   return (
     <Container>

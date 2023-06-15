@@ -23,7 +23,7 @@ export const MainPage = () => {
 
   const { news, isLoadingNews } = useAppSelector((state) => state.news);
   const navigate = useNavigate();
-
+  console.log(news);
   const showMore = () => {
     navigate("/platform/all");
     scrollToTop();
